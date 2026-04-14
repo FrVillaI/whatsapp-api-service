@@ -208,35 +208,6 @@ npm run pm2:status     # Ver estado
 
 ---
 
-## Integración .NET 8
-
-Usar la clase `WhatsAppService` en el proyecto Nexora:
-
-```csharp
-// Uso básico
-var resultado = await _whatsApp.EnviarMensaje("593987654321", "Tu factura #001 está lista");
-
-if (!resultado.Exito)
-    logger.LogError("No se pudo enviar WhatsApp: {Error}", resultado.Mensaje);
-
-// Verificar que el servicio está listo antes de enviar
-var listo = await _whatsApp.CheckConexion();
-if (!listo)
-    throw new InvalidOperationException("El servicio WhatsApp no está disponible");
-```
-
-Configuración en `appsettings.json`:
-```json
-{
-  "WhatsApp": {
-    "BaseUrl": "http://localhost:3000",
-    "TimeoutSeconds": 15
-  }
-}
-```
-
----
-
 ## Troubleshooting
 
 **El QR no aparece en `/qr-page`:**
